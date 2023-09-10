@@ -52,3 +52,5 @@ staticfiles/
 
 # Migrations
 **/migrations/**
+
+uploads/

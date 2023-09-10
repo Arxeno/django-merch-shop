@@ -6,16 +6,22 @@ from os.path import join
 
 
 class Category(models.Model):
+    def __str__(self):
+        return self.name
+
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(unique=True)
 
 
 class Item(models.Model):
+    def __str__(self):
+        return self.name
+
     def upload_path(instance, filename):
         ext = filename.split('.')[-1]
 
-        return join('uploads', instance.category.name, f'{instance.name}.{ext}')
+        return join('uploads', instance.category.name, f'{instance.name}_{instance.id}.{ext}')
 
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True)
