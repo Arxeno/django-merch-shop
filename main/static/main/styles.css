@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	--carolina-blue:#87BCDE;
+	--chinese-violet: #805E73;
+	--davy-gray: #4e4d5c;
+	--charcoal-1: #2D4654;
+	--charcoal-2: #243B4A;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+nav.navbar {
+	background-color: var(--carolina-blue);
+	text-align: center;
+	padding: 1rem;
+}
+
+.grid-gap-1 {
+	display: grid;
+	gap: 1rem;
+}
+
+.brand {
+	color: var(--chinese-violet);
+}
+
+main {
+	padding: 2rem;;
+}
+
+.card-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	place-items: center;
+	gap: 1rem;
+}
+
+.card {
+	border-radius: 1rem;
+	width: 300px;
+	border: 1px solid gainsboro
+}
+
+.card > img {
+	border-radius: 1rem 1rem 0 0;
+	width: 100%;
+}
+
+.card-text {
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
