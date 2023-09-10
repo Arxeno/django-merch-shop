@@ -1,0 +1,52 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local development settings
+*.sqlite3
+*.db
+
+# Logs and debugging
+*.log
+*.pot
+*.pyo
+*.pyc
+__pycache__/
+*.egg-info/
+pip-wheel-metadata/
+logs/
+
+# Environment variables (sensitive information)
+.env
+*.env
+
+# Media files
+media/
+
+# Static files (usually collected into a separate directory)
+static/
+
+# Compiled Python files
+*.pyc
+
+# Dependency directories
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# PyCharm files
+.idea/
+*.iml
+*.iws
+
+# Visual Studio Code settings
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
