@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-from os import getenv
+from os import getenv, path
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main'
 ]
 
 MIDDLEWARE = [
@@ -81,10 +82,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': getenv('DB_NAME'),
-		'USER': getenv('DB_USER'),
-		'PASSWORD': getenv('DB_PASS'),
-		'HOST': getenv('DB_HOST'),
-		'PORT': getenv('DB_PORT')
+        'USER': getenv('DB_USER'),
+        'PASSWORD': getenv('DB_PASS'),
+        'HOST': getenv('DB_HOST'),
+        'PORT': getenv('DB_PORT')
     }
 }
 
@@ -124,6 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
