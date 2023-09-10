@@ -24,9 +24,6 @@ logs/
 # Media files
 media/
 
-# Static files (usually collected into a separate directory)
-static/
-
 # Compiled Python files
 *.pyc
 
@@ -52,3 +49,6 @@ Thumbs.db
 .ipynb_checkpoints/
 
 staticfiles/
+
+# Migrations
+**/migrations/**
