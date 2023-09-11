@@ -21,3 +21,15 @@ Jawaban: Virtual environment sebenarnya adalah opsional. Program Django kita dap
 # 4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
 
 Jawaban:
+
+## MVC
+
+MVC adalah singkatan dari (Model-View-Controller).
+
+## MVT
+
+MVT adalah singkatan dari (Model-View-Template).
+
+## MVVM
+
+MVVM adalah singkatan dari (Model-View-Viewmodel).
