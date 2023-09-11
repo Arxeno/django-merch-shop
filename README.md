@@ -12,7 +12,9 @@ Jawaban:
 
 # 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
-Jawaban:
+Jawaban: Untuk penjelasan bagan dapat diakses di link [FigJam][https://www.figma.com/file/kJ66qnnWO3iNRDp56QetQw/Diagram-Tugas-2-PBP?type=whiteboard&node-id=0%3A1&t=ZFTsJmHFOS2rQuyV-1] berikut atau dapat dilihat dibawah ini.
+
+![Bagan Project Django inventory_merch](/Diagram%20Tugas%202%20PBP.png)
 
 # 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 
