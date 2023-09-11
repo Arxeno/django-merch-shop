@@ -24,7 +24,11 @@ Jawaban:
 
 ## MVC
 
-MVC adalah singkatan dari (Model-View-Controller).
+MVC atau Model-View-Controller adalah _design pattern_ yang membagi aplikasi menjadi 3 bagian utama, yaitu:
+
+- _Model_:
+- _View_:
+- _Controller_:
 
 ## MVT
 
