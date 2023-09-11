@@ -38,8 +38,16 @@ Fitur-fitur yang ditawarkan MVC:
 
 ## MVT
 
-MVT adalah singkatan dari (Model-View-Template).
+MVT adalah singkatan dari (Model-View-Template). Berikut adalah penjelasan dari setiap komponen dalam MVT:
+
+- **Model**: Bagian pembuatan Schema/Model database kita.
+- **View**: Untuk menerima request dari client dan melakukan suatu logic yang kemudian akan dikirimkan sebagai response kepada client.
+- **Template**: Terdiri dari file-file static yang akan dikirimkan sebagai response kepada client.
 
 ## MVVM
 
-MVVM adalah singkatan dari (Model-View-Viewmodel).
+MVVM atau Model-View-Viewmodel adalah design architecture yang biasa digunakan dalam Android Development. Berikut adalah penjelasan lebih lanjut mengenai ketiga komponen diatas:
+
+- **Model**: Berperan dalam manipulasi dan pembuatan model database.
+- **View**: Berperan sebagai konfigurasi User Interface.
+- **Viewmodel**: Berperan sebagai penghubung antara View dan Model.
