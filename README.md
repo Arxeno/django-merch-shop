@@ -26,9 +26,15 @@ Jawaban:
 
 MVC atau Model-View-Controller adalah _design pattern_ yang membagi aplikasi menjadi 3 bagian utama, yaitu:
 
-- _Model_:
-- _View_:
-- _Controller_:
+- **Model**: Menyimpan segala logic terkait manipulasi data model di database.
+- **View**: Menyimpan komponen-komponen UI yang akan ditampilkan.
+- **Controller**: Menjadi penengah antara View dan Model. Disini juga perilaku apa yang akan dilakukan jika client mengakses endpoint tertentu.
+
+Fitur-fitur yang ditawarkan MVC:
+
+- Memisahkan business logic, UI logic, dan input logic lebih jelas.
+- Menyediakan full control terhadap HTML dan URLs sehingga dapat lebih mudah dalam mendesain web application architecture
+- Mensupport Test Driven Development (TDD)
 
 ## MVT
 
