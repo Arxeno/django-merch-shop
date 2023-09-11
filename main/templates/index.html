@@ -19,45 +19,15 @@
 		<div class="grid-gap-1">
 			<h2>Produk Kami</h2>
 			<div class="card-container">
-				<a class="card" href="https://www.google.com">
-					<img src="https://s1.bukalapak.com/img/64155572992/s-463-463/data.jpeg.webp">
+				{% for item in items %}
+				<a class="card" href="/product/{{item.category.name}}/{{item.id}}">
+					<img src="{{item.image.url}}">
 					<div class="card-text">
-						<h3>Baju Spy X Family</h3>
-						<p>Rp 120.000</p>
+						<h3>{{item.name}}</h3>
+						<p>Rp {{item.price}}</p>
 					</div>
 				</a>
-
-				<a class="card">
-					<img src="https://s1.bukalapak.com/img/64155572992/s-463-463/data.jpeg.webp">
-					<div class="card-text">
-						<h3>Baju Spy X Family</h3>
-						<p>Rp 120.000</p>
-					</div>
-				</a>
-
-				<a class="card">
-					<img src="https://s1.bukalapak.com/img/64155572992/s-463-463/data.jpeg.webp">
-					<div class="card-text">
-						<h3>Baju Spy X Family</h3>
-						<p>Rp 120.000</p>
-					</div>
-				</a>
-
-				<a class="card">
-					<img src="https://s1.bukalapak.com/img/64155572992/s-463-463/data.jpeg.webp">
-					<div class="card-text">
-						<h3>Baju Spy X Family</h3>
-						<p>Rp 120.000</p>
-					</div>
-				</a>
-
-				<a class="card">
-					<img src="https://s1.bukalapak.com/img/64155572992/s-463-463/data.jpeg.webp">
-					<div class="card-text">
-						<h3>Baju Spy X Family</h3>
-						<p>Rp 120.000</p>
-					</div>
-				</a>
+				{% endfor %}
 			</div>
 		</div>
 	</main>
