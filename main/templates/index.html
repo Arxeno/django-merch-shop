@@ -12,13 +12,23 @@
 
 <body>
 	<nav class="navbar">
-		<h1>Selamat Datang di <span class="brand">RukoMerch</span>!</h1>
+		<h1 class="brand">RukoMerch</h1>
+		<div id="navbar-link">
+			<a href="/">Home</a>
+			<a href="/create/item">Add Item</a>
+		</div>
 	</nav>
 
-	{% block content %}
 	<main>
+		{% block content %}
 		<div class="grid-gap-1">
-			<h2>Produk Kami</h2>
+			<div id="title-and-add">
+				<h2>Produk Kami</h2>
+				<a href="{% url 'create_item' %}" class="button">
+					<img src="{% static 'main/icons/add_icon.svg' %}" alt="add icon">
+				</a>
+			</div>
+
 			<div class="card-container">
 				{% for item in items %}
 				<a class="card" href="/product/{{item.category.name}}/{{item.id}}">
@@ -31,8 +41,8 @@
 				{% endfor %}
 			</div>
 		</div>
+		{% endblock %}
 	</main>
-	{% endblock %}
 
 </body>
 

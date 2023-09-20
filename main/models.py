@@ -30,4 +30,4 @@ class Item(models.Model):
     description = models.TextField()
     price = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=upload_path)
+    image = models.ImageField(upload_to=upload_path, null=True, blank=True)

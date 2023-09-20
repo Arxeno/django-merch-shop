@@ -6,4 +6,7 @@ import os
 
 @receiver(pre_delete, sender=Item)
 def delete_item_images(sender, instance, **kwargs):
-    os.remove(instance.image.path)
+    try:
+        os.remove(instance.image.path)
+    except Exception as e:
+        print(e)
