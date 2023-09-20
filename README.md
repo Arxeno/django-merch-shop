@@ -92,6 +92,7 @@ JSON lebih sering digunakan ketimbang XML dalam pertukaran data adalah karena pe
 - Menguji endpoint `item/json`
 - Membuat endpoint GET JSON data by ID
 - Menguji endpoint `item/json/:id`
+- Menambahkan bonus: jumlah items di RukoMerch di file `index.html`
 
 Endpoint HTML: /
 ![SS HTML](/HTML.png)
