@@ -23,7 +23,14 @@
 		{% block content %}
 		<div class="grid-gap-1">
 			<div id="title-and-add">
-				<h2>Produk Kami</h2>
+				<div>
+					<h2>Produk Kami</h2>
+					{% if items %}
+					<p>Terdapat {{ items|length }} produk di RukoMerch</p>
+					{% else %}
+					<p>Tidak ada produk :(</p>
+					{% endif %}
+				</div>
 				<a href="{% url 'create_item' %}" class="button">
 					<img src="{% static 'main/icons/add_icon.svg' %}" alt="add icon">
 				</a>
