@@ -78,6 +78,21 @@ JSON lebih sering digunakan ketimbang XML dalam pertukaran data adalah karena pe
 
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
+- membuat file forms.py
+- Membuat ModelForm untuk model Item
+- Membuat fungsi views untuk menghandle request GET dan POST untuk form Item
+- Membuat halaman sukses membuat item
+- Membuat tombol `Add Item` di halaman home (`index.html`)
+- Mengubah response `HttpResponse('Success!')` dengan `render(request, 'success.html')`
+- Membuat url untuk GET XML data
+- Menguji endpoint `item/xml`
+- Membuat endpoint GET XML data by ID
+- Menguji endpoint `item/xml/:id`
+- Membuat url untuk GET JSON data
+- Menguji endpoint `item/json`
+- Membuat endpoint GET JSON data by ID
+- Menguji endpoint `item/json/:id`
+
 Endpoint HTML: /
 ![SS HTML](/HTML.png)
 
