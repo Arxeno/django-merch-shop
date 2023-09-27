@@ -22,7 +22,8 @@ def display_landing(request):
 
     context = {
         'items': items,
-        'last_login': request.COOKIES['last_login']
+        'last_login': request.COOKIES['last_login'],
+        'name': request.user.username
     }
     return render(request, 'index.html', context)
 
