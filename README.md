@@ -108,3 +108,31 @@ Endpoint JSON: /item/json
 
 Endpoint JSON by ID: /item/json/:id
 ![SS JSON by ID](/JSON%20by%20ID.png)
+
+# TUGAS 4
+
+## Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya?
+
+UserCreationForm adalah sebuah kelas dalam django dimana mempermudah para web developer dalam membuat user. Kelebihan dari menggunakan UserCreationForm adalah semua logic autentikasi seperti penggunaan hasing password, pemeriksaan kesediaan user berdasarkan input login dari pengguna dan lain sebagainya sehingga kita sebagai developer tidak perlu membuat fitur autentikasi dari awal. Tapi dengan kelebihan tersebut, yakni 'sudah disiapkan dari django'-nya, terdapat kekurangan dimana apabila kita menginginkan untuk menambah field di login atau registrasi, maka kita tidak bisa menggunakan Django sehingga harus membuat sistem autentikasi secara manual.
+
+## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+_Authentication_ itu seperti di tahap login, register, dan logout. Sedangkan _Authorization_ itu seperti ketika kita ingin mengakses halaman beranda dari Django app yang menggunakan `@login_required(login_url='[url login]')`, maka disitu Django akan memeriksa apakah client yang merequest tersebut memiliki otorisasi dalam mengakses halaman beranda. Jika iya, maka Django akan mengarahkan user ke halaman beranda. Jika tidak, maka Django akan melakukan sesuatu seperti mengarahkan ke laman login.
+
+## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+Cookies adalah mekanisme untuk menyimpan suatu data dari sisi klien, mirip seperti _Local Storage_ dan _Session Storage_. Bedanya jika Local Storage dan Session Storage disimpan dan diakses menggunakan Web Storage API, Cookies tidak menggunakan Web Storage API dalam menyimpan suatu data, walaupun sama-sama disimpan di sisi klien.
+
+Cara menerapkan cookies di django adalah membuat perintah untuk menyimpan cookies ketika user login.
+Contoh: `response.set_cookie('[sebuah key]', [sebuah nilai])`
+
+Kemudian kita dapat mengakses cookie seperti berikut:
+Contoh: `request.COOKIES['[sebuah key]']`
+
+## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+Secara default cookie tidak aman dibandingkan dengan local storage atau session storage. Karena para peretas dapat mengeksploitasi nya menggunakan CSRF sehingga dapat mengakses akun pengguna di web tersebut. Untuk mencegah risiko tersebut, kita dapat menggunakan CSRF token sehingga ketika server menerima request, maka server akan memeriksa terlebih dahulu apakah csrf token yang digunakan valid atau tidak.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+Pertama saya membuat fitur register user, membuat fungsi view nya dan menambahkan url endpoint untuk view register. Setelah itu saya menerapkan fungsi view login beserta url endpoint-nya. Setelah login dan register selesai, maka saya mulai membuat view untuk fitur logout. Setelah fungsi autentikasi secara keseluruhan sudah bisa bekerja (tanpa cookie), saya mulai mencoba menerapkan cookie agar user tidak perlu login setiap kali mengunjungi website.
