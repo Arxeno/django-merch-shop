@@ -49,15 +49,14 @@ def create_item(request):
     form = ItemForm(request.POST or None)
 
     if form.is_valid() and request.method == 'POST':
-        print(form)
-        print(type(form))
+        user = request.user
         name = form.cleaned_data['name']
         amount = form.cleaned_data['amount']
         description = form.cleaned_data['description']
         price = form.cleaned_data['price']
         category = form.cleaned_data['category']
         image = request.FILES['image']
-        new_item = Item(name=name, amount=amount, description=description,
+        new_item = Item(user=user, name=name, amount=amount, description=description,
                         price=price, category=category, image=image)
         new_item.save()
         # form.save()

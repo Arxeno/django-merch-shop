@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from os.path import join
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -25,6 +26,7 @@ class Item(models.Model):
 
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(unique=True)
     amount = models.IntegerField()
     description = models.TextField()
