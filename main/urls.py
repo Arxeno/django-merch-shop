@@ -8,5 +8,6 @@ urlpatterns = [
     path('item/xml', views.show_xml),
     path('item/xml/<str:id>', views.show_xml_by_id),
     path('item/json', views.show_json),
-    path('item/json/<str:id>', views.show_json_by_id)
+    path('item/json/<str:id>', views.show_json_by_id),
+    path('register/', views.register, name='register')
 ]

@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import FileResponse, Http404, HttpResponse
 from .models import Item
 from .forms import ItemForm
 from django.core import serializers
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -77,3 +79,17 @@ def show_json(request):
 def show_json_by_id(request, id):
     item = Item.objects.filter(pk=id)
     return HttpResponse(serializers.serialize('json', item), content_type='application/json')
+
+
+def register(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Sukses membuat akun!')
+            return redirect('main:login')
+
+    context = {'form': form}
+    return render(request, 'register.html', context)
