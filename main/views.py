@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import FileResponse, Http404, HttpResponse, HttpResponseRedirect
+from django.http import FileResponse, Http404, HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
 from .models import Item
 from .forms import ItemForm
 from django.core import serializers
@@ -123,3 +123,28 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+
+def edit_item(request):
+    request = request.POST.get('action').split('$')
+    action = request[0]
+    item_id = request[1]
+
+    try:
+        item = Item.objects.get(pk=item_id)
+    except:
+        return Http404('MODEL NOT FOUND')
+
+    if action == 'add':
+        item.amount += 1
+        item.save()
+        return redirect('main:display_landing')
+    elif action == 'substract':
+        item.amount -= 1
+        item.save()
+        return redirect('main:display_landing')
+    elif action == 'delete':
+        item.delete()
+        return redirect('main:display_landing')
+    else:
+        return HttpResponseBadRequest('BAD REQUEST')

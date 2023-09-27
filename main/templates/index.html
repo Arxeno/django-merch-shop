@@ -44,11 +44,23 @@
 
 			<div class="card-container">
 				{% for item in items %}
-				<a class="card" href="/product/{{item.category.name}}/{{item.id}}">
+				<a class="card">
 					<img src="{{item.image.url}}">
 					<div class="card-text">
+						<form method="POST" class="button-card-container" action="{% url 'main:edit_item' %}">
+							{% csrf_token %}
+							<div class="add-substract-container">
+								<button class="button-effect button-square bg-blue" type="submit" name="action"
+									value="add${{ item.id }}">➕</button>
+								<button class="button-effect button-square bg-red" type="submit" name="action"
+									value="substract${{ item.id }}">➖</button>
+							</div>
+							<button class="button-effect button-square bg-yellow" type="submit" name="action"
+								value="delete${{ item.id }}">🗑️</button>
+						</form>
 						<h3>{{item.name}}</h3>
 						<p>Rp {{item.price}}</p>
+						<p>Amount: {{ item.amount }}</p>
 						<p class="tag">{{ item.category.name }}</p>
 					</div>
 				</a>

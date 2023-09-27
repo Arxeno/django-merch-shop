@@ -20,6 +20,18 @@ body {
   background-color: var(--green);
 }
 
+.bg-red {
+  background-color: var(--red);
+}
+
+.bg-blue {
+  background-color: var(--blue);
+}
+
+.bg-yellow {
+  background-color: var(--yellow);
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -49,7 +61,7 @@ nav.navbar {
 }
 
 .brand {
-  color: var(--charcoal-1);
+  color: black;
 }
 
 main {
@@ -305,4 +317,20 @@ input.submit-effect:focus {
   padding: 4px;
   background-color: var(--yellow);
   border-radius: 12px;
+}
+
+.button-square {
+  padding: 10px;
+}
+
+.button-card-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.add-substract-container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
