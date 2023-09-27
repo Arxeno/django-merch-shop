@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import FileResponse, Http404, HttpResponse
+from django.http import FileResponse, Http404, HttpResponse, HttpResponseRedirect
 from .models import Item
 from .forms import ItemForm
 from django.core import serializers
@@ -7,6 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+import datetime
+from django.urls import reverse
 
 # Create your views here.
 
@@ -19,7 +21,8 @@ def display_landing(request):
         return Http404()
 
     context = {
-        'items': items
+        'items': items,
+        'last_login': request.COOKIES['last_login']
     }
     return render(request, 'index.html', context)
 
@@ -105,7 +108,9 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('main:display_landing')
+            response = HttpResponseRedirect(reverse('main:display_landing'))
+            response.set_cookie('last_login', str(datetime.datetime.now()))
+            return response
         else:
             messages.info(
                 request, 'Maaf, entry username atau password salah. Silahkan coba lagi.')
@@ -115,4 +120,6 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    return redirect('main:login')
+    response = HttpResponseRedirect(reverse('main:login'))
+    response.delete_cookie('last_login')
+    return response
