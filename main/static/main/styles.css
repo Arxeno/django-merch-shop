@@ -177,7 +177,8 @@ input {
 }
 
 input:not([type="submit"]),
-textarea {
+textarea,
+select {
   width: 100%;
   border: var(--black-border);
   border-radius: 15px;
@@ -190,7 +191,8 @@ textarea {
 }
 
 input:not([type="file"]):focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   outline: none;
   box-shadow: 3px 3px black;
   bottom: 3px;
