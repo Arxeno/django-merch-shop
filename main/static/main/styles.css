@@ -176,7 +176,8 @@ input {
   margin: auto;
 }
 
-input:not([type="submit"]) {
+input:not([type="submit"]),
+textarea {
   width: 100%;
   border: var(--black-border);
   border-radius: 15px;
@@ -188,7 +189,8 @@ input:not([type="submit"]) {
   right: 0;
 }
 
-input:not([type="file"]):focus {
+input:not([type="file"]):focus,
+textarea:focus {
   outline: none;
   box-shadow: 3px 3px black;
   bottom: 3px;
