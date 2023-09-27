@@ -25,6 +25,7 @@
 		<div class="grid-gap-1">
 			<div id="title-and-add">
 				<p>Terakhir login: {{ last_login }}</p>
+				<p>Nama: {{ name }}</p>
 				<div>
 					<h2>Produk Kami</h2>
 					{% if items %}
@@ -33,7 +34,7 @@
 					<p>Tidak ada produk :(</p>
 					{% endif %}
 				</div>
-				<a href="{% url 'create_item' %}" class="button">
+				<a href="{% url 'main:create_item' %}" class="button">
 					<img src="{% static 'main/icons/add_icon.svg' %}" alt="add icon">
 				</a>
 			</div>
