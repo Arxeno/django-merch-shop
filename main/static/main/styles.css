@@ -7,19 +7,32 @@ body {
   --davy-gray: #4e4d5c;
   --charcoal-1: #2d4654;
   --charcoal-2: #243b4a;
+  --green: #50ffaf;
+  --blue: #4b69ff;
+  --magenta: #ff00ff;
+  --yellow: #f8ff1e;
+  --violet: #9c7bff;
+  --cyan: #45f9ff;
+  --pink: #ff459c;
+  --red: #f54c40;
+  --border-small: 3px;
+  --black-border: 3px solid black;
+  background-color: var(--green);
 }
 
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 nav.navbar {
-  background-color: var(--carolina-blue);
+  background-color: white;
   text-align: center;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
+  border: var(--black-border);
 }
 
 #navbar-link {
@@ -51,14 +64,17 @@ main {
 }
 
 .card {
-  border-radius: 1rem;
+  border-radius: 16px;
   width: 300px;
-  border: 1px solid gainsboro;
+  border: var(--black-border);
+  background-color: white;
+  box-shadow: 10px 10px black;
 }
 
 .card > img {
   border-radius: 1rem 1rem 0 0;
   width: 100%;
+  border-bottom: var(--black-border);
 }
 
 .card-text {
@@ -103,4 +119,190 @@ input {
   justify-content: flex-start;
   gap: 10px;
   align-items: center;
+}
+
+.button-yellow {
+  text-decoration: none;
+  color: black;
+  background: var(--yellow);
+  padding: 5px 35px !important;
+  font-weight: 700;
+}
+
+.button-effect {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  box-shadow: 3px 3px black;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0 5px;
+  width: fit-content;
+  width: -moz-fit-content;
+  transition: 0.075s ease-in;
+}
+
+.button-effect:active {
+  top: 3px;
+  left: 3px;
+  box-shadow: 0 0;
+}
+
+.login {
+  background-color: white;
+  border: var(--black-border);
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 20px 20px black;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 50%;
+  max-width: 400px;
+  min-width: 375px;
+  margin: auto;
+}
+
+input:not([type="submit"]) {
+  width: 100%;
+  border: var(--black-border);
+  border-radius: 15px;
+  font-size: 1.3rem;
+  padding: 10px;
+  transition: 0.25s ease-out;
+  position: relative;
+  bottom: 0;
+  right: 0;
+}
+
+input:not([type="file"]):focus {
+  outline: none;
+  box-shadow: 3px 3px black;
+  bottom: 3px;
+  right: 3px;
+  background: var(--yellow);
+}
+
+input[type="file"]:hover {
+  outline: none;
+  box-shadow: 3px 3px black;
+  bottom: 3px;
+  right: 3px;
+}
+
+input::-webkit-file-upload-button {
+  background: var(--yellow);
+  border: var(--black-border);
+  border-radius: 10px;
+}
+
+input::file-selector-button {
+  background: var(--yellow);
+  border: var(--black-border);
+  border-radius: 10px;
+}
+
+.login {
+  text-align: center;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.entry-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+}
+
+input.submit-yellow {
+  width: 100% !important;
+  text-decoration: none;
+  color: black;
+  background: var(--yellow);
+  padding: 15px 35px !important;
+  font-weight: 700;
+}
+
+input.submit-effect {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  box-shadow: 3px 3px black;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0 5px;
+  width: fit-content;
+  width: -moz-fit-content;
+  transition: 0.075s ease-in;
+}
+
+input.submit-effect:focus {
+  top: 3px;
+  left: 3px;
+  box-shadow: 0 0;
+}
+
+.warning-login {
+  background-color: var(--red);
+  border: var(--black-border);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 12px;
+  list-style-type: none;
+}
+
+.container-white {
+  background-color: white;
+  border: var(--black-border);
+  border-radius: 15px;
+  padding: 8px;
+  width: fit-content;
+}
+
+#welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#add-button {
+  text-decoration: none;
+  color: black;
+  background: var(--yellow);
+  padding: 5px !important;
+  font-weight: 700;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  box-shadow: 3px 3px black;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  width: fit-content;
+  width: -moz-fit-content;
+  transition: 0.075s ease-in;
+}
+
+#add-button:active {
+  top: 3px;
+  left: 3px;
+  box-shadow: 0 0;
+}
+
+.tag {
+  border: var(--black-border);
+  width: fit-content;
+  padding: 4px;
+  background-color: var(--yellow);
+  border-radius: 12px;
 }

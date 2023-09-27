@@ -14,18 +14,21 @@
 	<nav class="navbar">
 		<h1 class="brand">RukoMerch</h1>
 		<div id="navbar-link">
-			<a href="/">Home</a>
-			<a href="/create/item">Add Item</a>
-			<a href="{% url 'main:logout' %}">Log Out</a>
+			<a href="/" class="button-yellow button-effect">🏠Home</a>
+			<a href="/create/item" class="button-yellow button-effect">🫳Add Item</a>
+			<a href="{% url 'main:logout' %}" class="button-yellow button-effect">🥺Log Out</a>
 		</div>
 	</nav>
 
 	<main>
 		{% block content %}
 		<div class="grid-gap-1">
-			<div id="title-and-add">
+			<div id="welcome" class="container-white">
+				<h2>Wilujeng sumping kak {{ name }}!</h2>
 				<p>Terakhir login: {{ last_login }}</p>
-				<p>Nama: {{ name }}</p>
+			</div>
+
+			<div id="title-and-add" class="container-white">
 				<div>
 					<h2>Produk Kami</h2>
 					{% if items %}
@@ -34,7 +37,7 @@
 					<p>Tidak ada produk :(</p>
 					{% endif %}
 				</div>
-				<a href="{% url 'main:create_item' %}" class="button">
+				<a id="add-button" href="{% url 'main:create_item' %}">
 					<img src="{% static 'main/icons/add_icon.svg' %}" alt="add icon">
 				</a>
 			</div>
@@ -46,6 +49,7 @@
 					<div class="card-text">
 						<h3>{{item.name}}</h3>
 						<p>Rp {{item.price}}</p>
+						<p class="tag">{{ item.category.name }}</p>
 					</div>
 				</a>
 				{% endfor %}

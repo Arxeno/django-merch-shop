@@ -54,3 +54,4 @@ staticfiles/
 **/migrations/**
 
 uploads/
+*.txt

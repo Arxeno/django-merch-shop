@@ -10,35 +10,32 @@
 
 	<h1>Login</h1>
 
-	<form method="POST" action="">
+	<form method="POST" action="" class="form-login">
 		{% csrf_token %}
-		<table>
-			<tr>
-				<td>Username: </td>
-				<td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-			</tr>
+		<div class="entry-div">
+			<h3>Username: </h3>
+			<input type="text" name="username" placeholder="Username" class="form-control">
+		</div>
 
-			<tr>
-				<td>Password: </td>
-				<td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-			</tr>
+		<div class="entry-div">
+			<h3>Password: </h3>
+			<input type="password" name="password" placeholder="Password" class="form-control">
+		</div>
 
-			<tr>
-				<td></td>
-				<td><input class="btn login_btn" type="submit" value="Login"></td>
-			</tr>
-		</table>
+		<div>
+			<input class="btn login_btn submit-yellow submit-effect" type="submit" value="Login"></td>
+		</div>
 	</form>
 
 	{% if messages %}
-	<ul>
+	<ul class="warning-login">
 		{% for message in messages %}
 		<li>{{ message }}</li>
 		{% endfor %}
 	</ul>
 	{% endif %}
 
-	Don't have an account yet? <a href="{% url 'main:register' %}">Register Now</a>
+	<p>Belum punya akun 🫤? <a href="{% url 'main:register' %}">Buat Sekarang! 😎</a></p>
 
 </div>
 
