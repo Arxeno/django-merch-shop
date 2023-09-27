@@ -5,7 +5,7 @@ from .forms import ItemForm
 from django.core import serializers
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 
@@ -109,3 +109,8 @@ def login_user(request):
                 request, 'Maaf, entry username atau password salah. Silahkan coba lagi.')
     context = {}
     return render(request, 'login.html', context)
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('main:login')

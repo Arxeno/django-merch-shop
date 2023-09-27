@@ -10,5 +10,6 @@ urlpatterns = [
     path('item/json', views.show_json),
     path('item/json/<str:id>', views.show_json_by_id),
     path('register/', views.register, name='register'),
-    path('login/', views.login_user, name='login')
+    path('login/', views.login_user, name='login'),
+    path('logout/', views.logout_user, name='logout')
 ]
