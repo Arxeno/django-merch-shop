@@ -136,3 +136,15 @@ Secara default cookie tidak aman dibandingkan dengan local storage atau session 
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
 Pertama saya membuat fitur register user, membuat fungsi view nya dan menambahkan url endpoint untuk view register. Setelah itu saya menerapkan fungsi view login beserta url endpoint-nya. Setelah login dan register selesai, maka saya mulai membuat view untuk fitur logout. Setelah fungsi autentikasi secara keseluruhan sudah bisa bekerja (tanpa cookie), saya mulai mencoba menerapkan cookie agar user tidak perlu login setiap kali mengunjungi website.
+
+# TUGAS 5
+
+## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+
+## Jelaskan HTML5 Tag yang kamu ketahui.
+
+## Jelaskan perbedaan antara margin dan padding.
+
+## Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import FileResponse, Http404, HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
+from django.http import FileResponse, Http404, HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseServerError
 from .models import Item
 from .forms import ItemForm
 from django.core import serializers
@@ -18,13 +18,17 @@ def display_landing(request):
     try:
         items = Item.objects.all()
     except:
-        return Http404()
+        return HttpResponseServerError()
 
-    context = {
-        'items': items,
-        'last_login': request.COOKIES['last_login'],
-        'name': request.user.username
-    }
+    try:
+        context = {
+            'items': items,
+            'last_login': request.COOKIES['last_login'],
+            'name': request.user.username
+        }
+    except:
+        return redirect('main:login')
+
     return render(request, 'index.html', context)
 
 
@@ -46,6 +50,7 @@ def send_image(request, category, filename):
         return Http404()
 
 
+@login_required(login_url='/login')
 def create_item(request):
     form = ItemForm(request.POST or None)
 

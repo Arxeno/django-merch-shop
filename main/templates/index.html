@@ -55,13 +55,14 @@
 								<button class="button-effect button-square bg-red" type="submit" name="action"
 									value="substract${{ item.id }}">➖</button>
 							</div>
-							<button class="button-effect button-square bg-yellow" type="submit" name="action"
+							<button class="button-effect button-square bg-yellow delete-item-btn" type="submit" name="action"
 								value="delete${{ item.id }}">🗑️</button>
 						</form>
 						<h3>{{item.name}}</h3>
-						<p>Rp {{item.price}}</p>
-						<p>Amount: {{ item.amount }}</p>
-						<p class="tag">{{ item.category.name }}</p>
+						<span>{{item.description}}</span>
+						<span>Rp {{item.price}}</span>
+						<span>Amount: {{ item.amount }}</span>
+						<span class="tag">{{ item.category.name }}</span>
 					</div>
 				</a>
 				{% endfor %}
