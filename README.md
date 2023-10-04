@@ -141,10 +141,44 @@ Pertama saya membuat fitur register user, membuat fungsi view nya dan menambahka
 
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 
+1. Universal Selector => Berfungsi untuk memberi styling kepada semua elemen (tanpa terkecuali). Digunakan ketika kita ingin styling semua elemen yg ada di file html agar memiliki styling yg seragam.
+
+2. Type Selector (Element Selector) => Berfungsi untuk memberi styling kepada tag elemen yg sama. Digunakan ketika kita ingin styling semua tag tersebut agar memiliki style yg seragam.
+
+3. ID Selector (`#id`) => Berfungsi untuk memberi styling kepada elemen html yg memiliki id tersebut. Digunakan ketika kita ingin styling tag unik, yang hanya berlaku pada satu elemen
+
+4. Class Selector (`.class`) => Berfungsi untuk memberi styling kepada elemen html yg memiliki class tersebut. Digunakan ketika kita tidak ingin styling untuk elemen tertentu, melainkan yg memiliki atribut kelas yg kita berikan di dalam html tersebut.
+
+5. Attribute Selector (`[attribute]`, `[attribute=value]`) => Berfungsi untuk memberi styling kepada elemen yang memiliki atribut html tersebut. Digunakan ketika kita ingin memberikan styling kepada elemen yg memiliki atribut html tersebut.
+
+6. Pseudo-Class Selector (`:pseudo-class`) => Berfungsi untuk memberi styling kepada elemen yang berlaku ketika pseudoclass tersebut seperti `:hover`. Digunakan ketika kita ingin memberikan styling ketika suatu event terjadi.
+
+7. Pseudo-Element Selector (`::pseudo-element`) => Berfungsi untuk memberi styling untuk semi element dari suatu html element seperti `::after` dan `::before`. Digunakan ketika kita ingin membuat suatu elemen tanpa membuat elemen di html dengan menggunakan pseudo-element atau semi element ini.
+
 ## Jelaskan HTML5 Tag yang kamu ketahui.
+
+1. `<!DOCTYPE html>`: untuk memberitahu bahwa versi html yg digunakan adalah HTML5.
+2. `<html>`: sebagai root element bagi semua elemen html.
+3. `<head>`: berfungsi sebagai tempat konfigurasi meta web dan import link css atau script js. Bisa juga sebagai tempat untuk edit title web.
+4. `<title>`: untuk memberikan judul web yang ditampilkan di tab browser.
+5. `<meta>`: untuk memberikan informasi tambahan tentang halaman, seperti karakter encoding, deskripsi, dan kata kunci.
+6. `<link>`: untuk mengimport static file css.
+7. `<style>`: untuk memberikan styling css langsung di file html nya.
+8. `<script>`: untuk menyisipkan atau import kode Javascript ke html.
+9. `<body>`: sebagai 'root' content yg ditampilkan dalam user interface.
+10. `<div>`: untuk membuat custom element yg tidak memiliki arti/semantic.
 
 ## Jelaskan perbedaan antara margin dan padding.
 
+Kalau margin itu sebagai ruang pembatas atau pemberi jarak suatu elemen dengan elemen lainnya. Kalau padding itu sebagai pemberi jarak antara isi konten elemen agar memiliki jarak dengan border elemen tersebut.
+
 ## Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
 
+Kalau Bootstrap itu udah dikasih template nya dan styling sudah disiapkan sedemikian sehingga kita hanya terima hasil jadi styling nya. Sedangkan Tailwind itu tidak memberikan styling hasil jadi namun memberikan hasil jadi inline styling sehingga kita tidak perlu styling secara terpisah di file CSS nya.
+
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+1. Di folder app main, buat file style.css di static/main/style.css.
+2. Mengimport file css di index.html
+3. Memberikan styling css sehingga menjadi lebih menarik ✨.
+4. Memberikan styling untuk last card menggunakan pseudo-class `:last-child`
