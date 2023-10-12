@@ -70,7 +70,7 @@ main {
   padding: 2rem;
 }
 
-.card-container {
+#card-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   place-items: center;
@@ -350,6 +350,12 @@ input.submit-effect:focus {
 }
 
 .add-substract-container {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.edit-btn-container {
   display: flex;
   flex-direction: row;
   gap: 5px;

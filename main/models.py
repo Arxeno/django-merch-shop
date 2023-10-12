@@ -22,7 +22,7 @@ class Item(models.Model):
     def upload_path(instance, filename):
         ext = filename.split('.')[-1]
 
-        return join('uploads', instance.category.name, f'{instance.name}_{instance.id}.{ext}')
+        return join('uploads', f'{instance.name}_{instance.id}.{ext}')
 
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True)

@@ -1,6 +1,7 @@
+from django.conf import settings
 from django.shortcuts import render, redirect
-from django.http import FileResponse, Http404, HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseServerError
-from .models import Item
+from django.http import FileResponse, Http404, HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseServerError, JsonResponse
+from .models import Category, Item
 from .forms import ItemForm
 from django.core import serializers
 from django.contrib.auth.forms import UserCreationForm
@@ -32,9 +33,9 @@ def display_landing(request):
     return render(request, 'index.html', context)
 
 
-def send_image(request, category, filename):
+def send_image(request, filename):
     try:
-        file = open(f'uploads/{category}/{filename}', 'rb')
+        file = open(f'{settings.MEDIA_ROOT}/uploads/{filename}', 'rb')
         response = FileResponse(file)
 
         ext = filename.split('.')[-1]
@@ -47,7 +48,7 @@ def send_image(request, category, filename):
 
         return response
     except:
-        return Http404()
+        return JsonResponse({"message": "Not found."}, status=404)
 
 
 @login_required(login_url='/login')
@@ -153,3 +154,9 @@ def edit_item(request):
         return redirect('main:display_landing')
     else:
         return HttpResponseBadRequest('BAD REQUEST')
+
+
+def get_category_id(request, category_id):
+    category = Category.objects.get(pk=category_id)
+
+    return JsonResponse({'categoryName': category.name}, status=200)

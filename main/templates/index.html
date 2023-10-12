@@ -11,6 +11,7 @@
 </head>
 
 <body>
+	{% csrf_token %}
 	<nav class="navbar">
 		<h1 class="brand">RukoMerch</h1>
 		<div id="navbar-link">
@@ -31,45 +32,107 @@
 			<div id="title-and-add" class="container-white">
 				<div>
 					<h2>Produk Kami</h2>
-					{% if items %}
-					<p>Terdapat {{ items|length }} produk di RukoMerch</p>
-					{% else %}
-					<p>Tidak ada produk :(</p>
-					{% endif %}
+					<p id="items-length-container"></p>
 				</div>
 				<a id="add-button" href="{% url 'main:create_item' %}">
 					<img src="{% static 'main/icons/add_icon.svg' %}" alt="add icon">
 				</a>
 			</div>
 
-			<div class="card-container">
-				{% for item in items %}
-				<a class="card">
-					<img src="{{item.image.url}}">
-					<div class="card-text">
-						<form method="POST" class="button-card-container" action="{% url 'main:edit_item' %}">
-							{% csrf_token %}
-							<div class="add-substract-container">
-								<button class="button-effect button-square bg-blue" type="submit" name="action"
-									value="add${{ item.id }}">➕</button>
-								<button class="button-effect button-square bg-red" type="submit" name="action"
-									value="substract${{ item.id }}">➖</button>
-							</div>
-							<button class="button-effect button-square bg-yellow delete-item-btn" type="submit" name="action"
-								value="delete${{ item.id }}">🗑️</button>
-						</form>
-						<h3>{{item.name}}</h3>
-						<span>{{item.description}}</span>
-						<span>Rp {{item.price}}</span>
-						<span>Amount: {{ item.amount }}</span>
-						<span class="tag">{{ item.category.name }}</span>
-					</div>
-				</a>
-				{% endfor %}
+			<div id="card-container">
 			</div>
 		</div>
 		{% endblock %}
 	</main>
+
+	{% block script %}
+	<script>
+		const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+		const getItems = async () => {
+			return fetch("{% url 'main:get_items_json' %}").then(res => res.json())
+		}
+
+		const refreshItems = async () => {
+			document.getElementById('card-container').innerHTML = ''
+			const items = await getItems()
+			console.log(items);
+			let htmlString = ''
+
+			if (items.length == 0) {
+				document.querySelector('#items-length-container').innerHTML = `Tidak ada produk :(`
+			} else {
+				document.querySelector('#items-length-container').innerHTML = `Terdapat ${items.length} produk di RukoMerch`
+			}
+
+			items.forEach((item) => {
+				const category = fetch(`/category/${item.fields.category}`).then((res) => res.json()).then(resJson => {
+					htmlString += `
+				<a class="card">
+					<img src="${item.fields.image}">
+					<div class="card-text">
+						<div class="edit-btn-container">
+							<div class="add-substract-container">
+								<button class="button-effect button-square bg-blue"
+									value="add$${item.pk}" onclick="addAmount('${item.pk}')">➕</button>
+								<button class="button-effect button-square bg-red"
+									value="substract$${item.pk}" onclick="reduceAmount('${item.pk}')">➖</button>
+							</div>
+							<button class="button-effect button-square bg-yellow delete-item-btn"
+								value="delete$${item.pk}" onclick="deleteItem('${item.pk}')">🗑️</button>
+						</div>
+						<h3>${item.fields.name}</h3>
+						<span>${item.fields.description}</span>
+						<span>Rp ${item.fields.price}</span>
+						<span>Amount: ${item.fields.amount}</span>
+						<span class="tag">${resJson.categoryName}</span>
+					</div>
+				</a>`
+
+					document.getElementById('card-container').innerHTML = htmlString
+				})
+			})
+		}
+
+		const addAmount = (id) => {
+			const form = new FormData()
+			form.append('action', `add$${id}`)
+
+			fetch('edit/item', {
+				method: 'POST',
+				body: form,
+				headers: { 'X-CSRFToken': csrftoken },
+				mode: 'same-origin'
+			}).then(res => refreshItems())
+		}
+
+		const reduceAmount = (id) => {
+			const form = new FormData()
+			form.append('action', `substract$${id}`)
+
+			fetch('edit/item', {
+				method: 'POST',
+				body: form,
+				headers: { 'X-CSRFToken': csrftoken },
+				mode: 'same-origin'
+			}).then(res => refreshItems())
+		}
+
+		const deleteItem = (id) => {
+			const form = new FormData()
+			form.append('action', `delete$${id}`)
+
+			fetch('edit/item', {
+				method: 'POST',
+				body: form,
+				headers: { 'X-CSRFToken': csrftoken },
+				mode: 'same-origin'
+			}).then(res => refreshItems())
+		}
+
+		refreshItems()
+	</script>
+	{% endblock script %}
 
 </body>
 
