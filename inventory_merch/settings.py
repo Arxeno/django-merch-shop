@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'inventory_merch.wsgi.application'
+WSGI_APPLICATION = 'inventory_merch.wsgi.app'
 
 
 # Database
