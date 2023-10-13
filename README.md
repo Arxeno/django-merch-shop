@@ -182,3 +182,47 @@ Kalau Bootstrap itu udah dikasih template nya dan styling sudah disiapkan sedemi
 2. Mengimport file css di index.html
 3. Memberikan styling css sehingga menjadi lebih menarik ✨.
 4. Memberikan styling untuk last card menggunakan pseudo-class `:last-child`
+
+# TUGAS 6
+
+## Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+
+### Synchronous Programming (Programming Sinkron):
+
+Synchronous Programming itu seperti kita sedang makan di restoran cepat saji. Kita memesan burger dan koki pergi membuatnya. Kita harus menunggu sampai koki selesai membuat burger sebelum kita bisa makan. Sistem ini seperti tindakan yang terjadi satu demi satu. Tidak ada yang bisa berjalan bersamaan. Ini berarti kode dijalankan baris per baris secara berurutan. Semua tindakan harus menunggu yang sebelumnya selesai sebelum melanjutkan.
+
+### Asynchronous Programming (Programming Asinkron):
+
+Sedangkan untuk Asynchronous Programming itu seperti kita memesan pizza di restoran lain. Koki di sana tahu bahwa membuat pizza memerlukan waktu, jadi sambil menunggu pizza, kita dapat makan burger di restoran pertama. Ini adalah contoh asinkron. kita tidak harus menunggu satu hal selesai sebelum melakukan yang lain.
+
+Asynchronous programming adalah seperti ini. Ini memungkinkan komputer melakukan beberapa tugas sekaligus tanpa harus menunggu yang satu selesai. Ini sangat berguna ketika kita memiliki tugas yang memerlukan waktu, seperti mengunduh data dari internet atau menunggu tanggapan dari pengguna.
+
+## Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+
+Event driven programming adalah bentuk pemrograman dimana program akan menunggu suatu event terjadi, dan ketika suatu event terjadi maka program akan melakukan satu atau serangkaian perintah.
+
+## Jelaskan penerapan asynchronous programming pada AJAX.
+
+Penerapan asynchronous programming pada Javascript dapat dilakukan dalam 3 cara, yaitu:
+
+- menggunakan `XMLHttpRequest`. Ini adalah cara yang old school dan sudah lama tidak digunakan.
+- menggunakan fetch-then-catch. Ketika menggunakan cara fetch ini, maka kita dapat menaruh perintah yang harus dilakukan setelah asynchronous atau fetch berhasil atau gagal.
+- atau menggunakan async/await. Untuk menggunakan fungsi ini, maka kita harus menaruh keyword async di awal pendeklarasian fungsi dan keyword await ketika kita melakukan perintah fetch.
+
+## Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+| No. | Fetch API                                                                                  | jQuery                                                                                                                     |
+| --- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| 1.  | Mudah diaplikasikan                                                                        | Lebih rumit untuk diaplikasikan                                                                                            |
+| --- | ---                                                                                        |
+| 2.  | Karena ia adalah library built in javascript, maka tidak perlu memperdulikan sisi size nya | Jika kita menggunakan jQuery hanya untuk AJAX nya saja, maka library jQuery menjadi berat ketimbang menggunakan Fetch API. |
+| --- | ---                                                                                        |
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+Langkah-langkah implementasi saya:
+
+1. Mengubah implementasi GET items menjadi menggunakan AJAX.
+2. Mengubah implementasi POST add, substract, dan delete menjadi menggunakan AJAX.
+3. Mengubah implementasi POST create item menjadi menggunakan AJAX.
+4. Membuat views untuk url `create-ajax/` dan menerapkannya untuk POST create item.

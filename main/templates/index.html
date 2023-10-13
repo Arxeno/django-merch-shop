@@ -154,7 +154,7 @@
 			form.append('action', `delete$${id}`)
 
 			fetch('edit/item', {
-				method: 'POST',
+				method: 'DELETE',
 				body: form,
 				headers: { 'X-CSRFToken': csrftoken },
 				mode: 'same-origin'
