@@ -214,9 +214,7 @@ Penerapan asynchronous programming pada Javascript dapat dilakukan dalam 3 cara,
 | No. | Fetch API                                                                                  | jQuery                                                                                                                     |
 | --- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | 1.  | Mudah diaplikasikan                                                                        | Lebih rumit untuk diaplikasikan                                                                                            |
-| --- | ---                                                                                        |
 | 2.  | Karena ia adalah library built in javascript, maka tidak perlu memperdulikan sisi size nya | Jika kita menggunakan jQuery hanya untuk AJAX nya saja, maka library jQuery menjadi berat ketimbang menggunakan Fetch API. |
-| --- | ---                                                                                        |
 
 ## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
