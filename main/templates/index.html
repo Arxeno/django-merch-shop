@@ -163,9 +163,13 @@
 
 		const displayModal = () => {
 			document.querySelector('#modal-n-backdrop').style.display = 'flex'
+			document.querySelector('#backdrop').classList.add('fade-in-animation')
+			document.querySelector('#modal').classList.add('pop-up-animation')
 		}
 
 		const removeModal = () => {
+			document.querySelector('#backdrop').classList.add('fade-out-animation')
+			document.querySelector('#modal').classList.add('pop-down-animation')
 			document.querySelector('#modal-n-backdrop').style.display = 'none'
 		}
 
