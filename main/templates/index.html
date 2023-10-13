@@ -7,6 +7,508 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="{% static 'main/styles.css' %}">
+
+	<style>
+		@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+		@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+
+		body {
+			font-family: "Montserrat", sans-serif;
+			--carolina-blue: #87bcde;
+			--chinese-violet: #805e73;
+			--davy-gray: #4e4d5c;
+			--charcoal-1: #2d4654;
+			--charcoal-2: #243b4a;
+			--green: #50ffaf;
+			--blue: #4b69ff;
+			--magenta: #ff00ff;
+			--yellow: #f8ff1e;
+			--violet: #9c7bff;
+			--cyan: #45f9ff;
+			--pink: #ff459c;
+			--red: #f54c40;
+			--border-small: 3px;
+			--black-border: 3px solid black;
+			background-color: var(--green);
+		}
+
+		.bg-red {
+			background-color: var(--red);
+		}
+
+		.bg-blue {
+			background-color: var(--blue);
+		}
+
+		.bg-yellow {
+			background-color: var(--yellow);
+		}
+
+		button {
+			font-family: "Montserrat", sans-serif;
+			font-size: 16px;
+		}
+
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		nav.navbar {
+			background-color: white;
+			text-align: center;
+			padding: 1rem;
+			display: flex;
+			justify-content: space-between;
+			border: var(--black-border);
+		}
+
+		#navbar-link {
+			display: flex;
+			flex-direction: row;
+			gap: 10px;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.grid-gap-1 {
+			display: grid;
+			gap: 1rem;
+		}
+
+		.brand {
+			color: black;
+			font-family: "Dela Gothic One", cursive;
+		}
+
+		main {
+			padding: 2rem;
+		}
+
+		#card-container {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			place-items: center;
+			gap: 1rem;
+		}
+
+		.card {
+			border-radius: 16px;
+			width: 300px;
+			border: var(--black-border);
+			background-color: white;
+			box-shadow: 10px 10px black;
+			transition: 0.075s ease-in;
+		}
+
+		.card:hover {
+			box-shadow: 0 0 black;
+		}
+
+		.card:last-child {
+			background-color: var(--yellow);
+		}
+
+		.card:last-child .tag,
+		.card:last-child .delete-item-btn {
+			background-color: white;
+		}
+
+		.card>img {
+			border-radius: 1rem 1rem 0 0;
+			width: 100%;
+			border-bottom: var(--black-border);
+		}
+
+		.card-text {
+			padding: 0.5rem;
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+		}
+
+		a {
+			color: black;
+			text-decoration: none;
+		}
+
+		.button {
+			background-color: var(--chinese-violet);
+			width: fit-content;
+			color: white;
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		textarea {
+			font-family: "Montserrat", sans-serif;
+		}
+
+		input {
+			font-family: "Montserrat", sans-serif;
+		}
+
+		#success-page {
+			text-align: center;
+		}
+
+		.margin-center {
+			margin: auto;
+		}
+
+		#title-and-add {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			gap: 10px;
+			align-items: center;
+		}
+
+		.button-yellow {
+			text-decoration: none;
+			color: black;
+			background: var(--yellow);
+			padding: 5px 35px !important;
+			font-weight: 700;
+		}
+
+		.button-effect {
+			position: relative;
+			top: 0px;
+			left: 0px;
+			box-shadow: 3px 3px black;
+			border: 2px solid black;
+			border-radius: 10px;
+			cursor: pointer;
+			padding: 0 5px;
+			width: fit-content;
+			width: -moz-fit-content;
+			transition: 0.075s ease-in;
+		}
+
+		.button-effect:active {
+			top: 3px;
+			left: 3px;
+			box-shadow: 0 0;
+		}
+
+		.login {
+			background-color: white;
+			border: var(--black-border);
+			border-radius: 20px;
+			padding: 10px;
+			box-shadow: 20px 20px black;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			width: 50%;
+			max-width: 400px;
+			min-width: 375px;
+			margin: auto;
+		}
+
+		input:not([type="submit"]),
+		textarea,
+		select {
+			width: 100%;
+			border: var(--black-border);
+			border-radius: 15px;
+			font-size: 1.3rem;
+			padding: 10px;
+			transition: 0.25s ease-out;
+			position: relative;
+			bottom: 0;
+			right: 0;
+		}
+
+		input:not([type="file"]):focus,
+		textarea:focus,
+		select:focus {
+			outline: none;
+			box-shadow: 3px 3px black;
+			bottom: 3px;
+			right: 3px;
+			background: var(--yellow);
+		}
+
+		input[type="file"]:hover {
+			outline: none;
+			box-shadow: 3px 3px black;
+			bottom: 3px;
+			right: 3px;
+		}
+
+		input::-webkit-file-upload-button {
+			background: var(--yellow);
+			border: var(--black-border);
+			border-radius: 10px;
+		}
+
+		input::file-selector-button {
+			background: var(--yellow);
+			border: var(--black-border);
+			border-radius: 10px;
+		}
+
+		.login {
+			text-align: center;
+		}
+
+		.form-login {
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+
+		.entry-div {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			text-align: left;
+		}
+
+		input.submit-yellow {
+			width: 100% !important;
+			text-decoration: none;
+			color: black;
+			background: var(--yellow);
+			padding: 15px 35px !important;
+			font-weight: 700;
+		}
+
+		input.submit-effect {
+			position: relative;
+			top: 0px;
+			left: 0px;
+			box-shadow: 3px 3px black;
+			border: 2px solid black;
+			border-radius: 10px;
+			cursor: pointer;
+			padding: 0 5px;
+			width: fit-content;
+			width: -moz-fit-content;
+			transition: 0.075s ease-in;
+		}
+
+		input.submit-effect:focus {
+			top: 3px;
+			left: 3px;
+			box-shadow: 0 0;
+		}
+
+		.warning-login {
+			background-color: var(--red);
+			border: var(--black-border);
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			padding: 5px;
+			border-radius: 12px;
+			list-style-type: none;
+		}
+
+		.container-white {
+			background-color: white;
+			border: var(--black-border);
+			border-radius: 15px;
+			padding: 8px;
+			width: fit-content;
+		}
+
+		#welcome {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+		}
+
+		#add-button {
+			text-decoration: none;
+			color: black;
+			background: var(--yellow);
+			padding: 5px !important;
+			font-weight: 700;
+			position: relative;
+			top: 0px;
+			left: 0px;
+			box-shadow: 3px 3px black;
+			border: 2px solid black;
+			border-radius: 10px;
+			cursor: pointer;
+			width: fit-content;
+			width: -moz-fit-content;
+			transition: 0.075s ease-in;
+		}
+
+		#add-button:active {
+			top: 3px;
+			left: 3px;
+			box-shadow: 0 0;
+		}
+
+		.tag {
+			border: var(--black-border);
+			width: fit-content;
+			padding: 4px;
+			background-color: var(--yellow);
+			border-radius: 12px;
+		}
+
+		.button-square {
+			padding: 10px;
+		}
+
+		.button-card-container {
+			display: flex;
+			flex-direction: row;
+			gap: 20px;
+		}
+
+		.add-substract-container {
+			display: flex;
+			flex-direction: row;
+			gap: 5px;
+		}
+
+		.edit-btn-container {
+			display: flex;
+			flex-direction: row;
+			gap: 5px;
+		}
+
+		#backdrop {
+			position: fixed;
+			width: 100vw;
+			height: 100vh;
+			background-color: rgba(0, 0, 0, 0.266);
+			top: 0;
+			left: 0;
+			z-index: 1;
+		}
+
+		#modal {
+			padding: 16px;
+			background-color: white;
+			border: var(--black-border);
+			border-radius: 10px;
+			box-shadow: 3px 3px black;
+			width: 400px;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+			z-index: 10;
+		}
+
+		#modal .price-amount-container {
+			display: flex;
+			flex-direction: row;
+			gap: 4px;
+		}
+
+		#modal .field-container {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		#modal .field-container button {
+			width: 100%;
+			padding: 12px !important;
+		}
+
+		#modal h1 {
+			text-align: center;
+		}
+
+		textarea {
+			resize: none;
+		}
+
+		#modal-n-backdrop {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			display: none;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.fade-in-animation {
+			animation-name: fade-in;
+			animation-duration: 0.5s;
+			animation-timing-function: ease-in;
+		}
+
+		.fade-in-animation {
+			animation-name: fade-out;
+			animation-duration: 0.5s;
+			animation-timing-function: ease-out;
+		}
+
+		.pop-up-animation {
+			animation-name: pop-up;
+			animation-duration: 0.3s;
+			animation-timing-function: ease-in;
+		}
+
+		.pop-down-animation {
+			animation-name: pop-down;
+			animation-duration: 0.3s;
+			animation-timing-function: ease-out;
+		}
+
+		@keyframes fade-in {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		@keyframes fade-out {
+			from {
+				opacity: 1;
+			}
+
+			to {
+				opacity: 0;
+			}
+		}
+
+		@keyframes pop-up {
+			0% {
+				scale: 0.8;
+			}
+
+			80% {
+				scale: 1.2;
+			}
+
+			100% {
+				scale: 1;
+			}
+		}
+
+		@keyframes pop-down {
+			0% {
+				scale: 1;
+			}
+
+			80% {
+				scale: 1.2;
+			}
+
+			100% {
+				scale: 0;
+			}
+		}
+	</style>
+
 	<title>RukoMerch</title>
 </head>
 
