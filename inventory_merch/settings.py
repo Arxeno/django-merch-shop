@@ -26,7 +26,8 @@ env = environ.Env()
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = getenv('DJANGO_SECRET_KEY')
+# SECRET_KEY = getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = 'django-insecure-__bo^x3ck!vq722yuyg=$vw=b7i8$yh*r_9jfd*5f_kklb!ci1'
 # Automatically determine environment by detecting if DATABASE_URL variable.
 # DATABASE_URL is provided by Heroku if a database add-on is added (e.g. Heroku Postgres).
 PRODUCTION = env.bool('PRODUCTION', False)
