@@ -14,5 +14,6 @@ urlpatterns = [
     path('logout/', views.logout_user, name='logout'),
     path('edit/item', views.edit_item, name='edit_item'),
     path('category/<str:category_id>',
-         views.get_category_id, name='get_category_id')
+         views.get_category_id, name='get_category_id'),
+    path('category', views.get_category, name="get_category")
 ]

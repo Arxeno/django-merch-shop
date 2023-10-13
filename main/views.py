@@ -146,7 +146,8 @@ def edit_item(request):
         item.save()
         return redirect('main:display_landing')
     elif action == 'substract':
-        item.amount -= 1
+        if (item.amount > 0):
+            item.amount -= 1
         item.save()
         return redirect('main:display_landing')
     elif action == 'delete':
@@ -160,3 +161,8 @@ def get_category_id(request, category_id):
     category = Category.objects.get(pk=category_id)
 
     return JsonResponse({'categoryName': category.name}, status=200)
+
+
+def get_category(request):
+    items = Category.objects.all()
+    return HttpResponse(serializers.serialize('json', items), content_type='application/json')

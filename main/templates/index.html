@@ -16,7 +16,7 @@
 		<h1 class="brand">RukoMerch</h1>
 		<div id="navbar-link">
 			<a href="/" class="button-yellow button-effect">🏠Home</a>
-			<a href="/create/item" class="button-yellow button-effect">🫳Add Item</a>
+			<button onclick="displayModal()" class="button-yellow button-effect">🫳Add Item</button>
 			<a href="{% url 'main:logout' %}" class="button-yellow button-effect">🥺Log Out</a>
 		</div>
 	</nav>
@@ -45,12 +45,32 @@
 		{% endblock %}
 	</main>
 
+	<div id="modal-n-backdrop">
+		<div id="backdrop" onclick="removeModal()"></div>
+
+		<div id="modal">
+			<h1>Add New Item</h1>
+
+			<div class="field-container">
+				<input type="text" placeholder="Nama Item" name="name">
+				<div class="price-amount-container">
+					<input type="text" placeholder="Price" name="price">
+					<input type="text" placeholder="Amount" name="amount">
+				</div>
+				<textarea placeholder="Description" name="description"></textarea>
+				<select id="categories-select" aria-placeholder="Category" name="category"></select>
+				<input type="file" name="image">
+				<button onclick="createItem()" class="button-yellow button-effect">Create</button>
+			</div>
+		</div>
+	</div>
+
 	{% block script %}
 	<script>
 		const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
 		const getItems = async () => {
-			return fetch("{% url 'main:get_items_json' %}").then(res => res.json())
+			return fetch(" {% url 'main:get_items_json' %}").then(res => res.json())
 		}
 
 		const refreshItems = async () => {
@@ -92,6 +112,17 @@
 					document.getElementById('card-container').innerHTML = htmlString
 				})
 			})
+
+			const categoryResponse = await fetch('/category')
+			const categories = await categoryResponse.json()
+			console.log(categories);
+			categoryString = ''
+
+			categories.forEach(category => {
+				categoryString += `<option value="${category.pk}">${category.fields.name}</option>`
+			})
+
+			document.querySelector('#categories-select').innerHTML = categoryString
 		}
 
 		const addAmount = (id) => {
@@ -128,6 +159,41 @@
 				headers: { 'X-CSRFToken': csrftoken },
 				mode: 'same-origin'
 			}).then(res => refreshItems())
+		}
+
+		const displayModal = () => {
+			document.querySelector('#modal-n-backdrop').style.display = 'flex'
+		}
+
+		const removeModal = () => {
+			document.querySelector('#modal-n-backdrop').style.display = 'none'
+		}
+
+		const createItem = () => {
+			const form = new FormData()
+			console.log(document.querySelector('input[name="name"]').value);
+			console.log(document.querySelector('input[name="price"]').value);
+			console.log(document.querySelector('input[name="amount"]').value);
+			console.log(document.querySelector('textarea[name="description"]').value);
+			console.log(document.querySelector('select[name="category"]').value);
+			console.log(document.querySelector('input[name="image"]').value);
+
+			form.append('name', document.querySelector('input[name="name"]').value)
+			form.append('price', document.querySelector('input[name="price"]').value)
+			form.append('amount', document.querySelector('input[name="amount"]').value)
+			form.append('description', document.querySelector('textarea[name="description"]').value)
+			form.append('category', document.querySelector('select[name="category"]').value)
+			form.append('image', document.querySelector('input[name="image"]').files[0])
+
+			fetch('/create/item', {
+				method: 'POST',
+				body: form,
+				headers: { 'X-CSRFToken': csrftoken },
+				mode: 'same-origin'
+			}).then(res => {
+				removeModal();
+				refreshItems()
+			})
 		}
 
 		refreshItems()

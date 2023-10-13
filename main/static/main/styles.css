@@ -33,6 +33,11 @@ body {
   background-color: var(--yellow);
 }
 
+button {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -359,4 +364,63 @@ input.submit-effect:focus {
   display: flex;
   flex-direction: row;
   gap: 5px;
+}
+
+#backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.266);
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#modal {
+  padding: 16px;
+  background-color: white;
+  border: var(--black-border);
+  border-radius: 10px;
+  box-shadow: 3px 3px black;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+
+#modal .price-amount-container {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+#modal .field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#modal .field-container button {
+  width: 100%;
+  padding: 12px !important;
+}
+
+#modal h1 {
+  text-align: center;
+}
+
+textarea {
+  resize: none;
+}
+
+#modal-n-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
