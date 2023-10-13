@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from os import getenv, path
 from dotenv import load_dotenv
+import environ
 
 load_dotenv()
 
@@ -28,6 +29,12 @@ SECRET_KEY = getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+env = environ.Env()
+
+# Automatically determine environment by detecting if DATABASE_URL variable.
+# DATABASE_URL is provided by Heroku if a database add-on is added (e.g. Heroku Postgres).
+PRODUCTION = env.bool('PRODUCTION', False)
 
 ALLOWED_HOSTS = []
 
@@ -78,16 +85,23 @@ WSGI_APPLICATION = 'inventory_merch.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': getenv('DB_NAME'),
-        'USER': getenv('DB_USER'),
-        'PASSWORD': getenv('DB_PASS'),
-        'HOST': getenv('DB_HOST'),
-        'PORT': getenv('DB_PORT')
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': getenv('DB_NAME'),
+#         'USER': getenv('DB_USER'),
+#         'PASSWORD': getenv('DB_PASS'),
+#         'HOST': getenv('DB_HOST'),
+#         'PORT': getenv('DB_PORT')
+#     }
+# }
+
+# Set database settings automatically using DATABASE_URL.
+if PRODUCTION:
+    DATABASES = {
+        'default': env.db('DATABASE_URL')
     }
-}
+    DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 
 # Password validation
@@ -125,7 +139,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = path.join(BASE_DIR, 'static')
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = path.join(BASE_DIR, 'media')
