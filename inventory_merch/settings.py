@@ -36,7 +36,7 @@ PRODUCTION = env.bool('PRODUCTION', False)
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
