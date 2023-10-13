@@ -166,3 +166,23 @@ def get_category_id(request, category_id):
 def get_category(request):
     items = Category.objects.all()
     return HttpResponse(serializers.serialize('json', items), content_type='application/json')
+
+
+@login_required(login_url='/login')
+def create_item_ajax(request):
+    if request.method == 'POST':
+        print(request.POST['category'])
+        user = request.user
+        name = request.POST['name']
+        amount = request.POST['amount']
+        description = request.POST['description']
+        price = request.POST['price']
+        category_id = request.POST['category']
+        image = request.FILES['image']
+
+        category = Category.objects.get(pk=category_id)
+
+        new_item = Item(user=user, name=name, amount=amount, description=description,
+                        price=price, category=category, image=image)
+        new_item.save()
+        return JsonResponse({'message': 'Success!'}, status=200)

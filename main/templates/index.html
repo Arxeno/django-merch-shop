@@ -171,12 +171,6 @@
 
 		const createItem = () => {
 			const form = new FormData()
-			console.log(document.querySelector('input[name="name"]').value);
-			console.log(document.querySelector('input[name="price"]').value);
-			console.log(document.querySelector('input[name="amount"]').value);
-			console.log(document.querySelector('textarea[name="description"]').value);
-			console.log(document.querySelector('select[name="category"]').value);
-			console.log(document.querySelector('input[name="image"]').value);
 
 			form.append('name', document.querySelector('input[name="name"]').value)
 			form.append('price', document.querySelector('input[name="price"]').value)
@@ -185,12 +179,19 @@
 			form.append('category', document.querySelector('select[name="category"]').value)
 			form.append('image', document.querySelector('input[name="image"]').files[0])
 
-			fetch('/create/item', {
+			fetch('/create-ajax', {
 				method: 'POST',
 				body: form,
 				headers: { 'X-CSRFToken': csrftoken },
 				mode: 'same-origin'
 			}).then(res => {
+				document.querySelector('input[name="name"]').value = '';
+				document.querySelector('input[name="price"]').value = ''
+				document.querySelector('input[name="amount"]').value = ''
+				document.querySelector('textarea[name="description"]').value = ''
+				document.querySelector('select[name="category"]').value = ''
+				document.querySelector('input[name="image"]').value = null
+
 				removeModal();
 				refreshItems()
 			})
