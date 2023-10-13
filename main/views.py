@@ -132,29 +132,37 @@ def logout_user(request):
 
 
 def edit_item(request):
-    request = request.POST.get('action').split('$')
-    action = request[0]
-    item_id = request[1]
+    if request.method == 'POST':
+        request = request.POST.get('action').split('$')
+        action = request[0]
+        item_id = request[1]
 
-    try:
-        item = Item.objects.get(pk=item_id)
-    except:
-        return Http404('MODEL NOT FOUND')
+        try:
+            item = Item.objects.get(pk=item_id)
+        except:
+            return Http404('MODEL NOT FOUND')
 
-    if action == 'add':
-        item.amount += 1
-        item.save()
-        return redirect('main:display_landing')
-    elif action == 'substract':
-        if (item.amount > 0):
-            item.amount -= 1
-        item.save()
-        return redirect('main:display_landing')
-    elif action == 'delete':
+        if action == 'add':
+            item.amount += 1
+            item.save()
+            return redirect('main:display_landing')
+        elif action == 'substract':
+            if (item.amount > 0):
+                item.amount -= 1
+            item.save()
+            return redirect('main:display_landing')
+        else:
+            return HttpResponseBadRequest('BAD REQUEST')
+    elif request.method == 'DELETE':
+        item_id = request.GET.get('id')
+
+        try:
+            item = Item.objects.get(pk=item_id)
+        except:
+            return Http404('MODEL NOT FOUND')
+
         item.delete()
         return redirect('main:display_landing')
-    else:
-        return HttpResponseBadRequest('BAD REQUEST')
 
 
 def get_category_id(request, category_id):

@@ -151,11 +151,9 @@
 
 		const deleteItem = (id) => {
 			const form = new FormData()
-			form.append('action', `delete$${id}`)
 
-			fetch('edit/item', {
+			fetch(`edit/item?id=${id}`, {
 				method: 'DELETE',
-				body: form,
 				headers: { 'X-CSRFToken': csrftoken },
 				mode: 'same-origin'
 			}).then(res => refreshItems())
