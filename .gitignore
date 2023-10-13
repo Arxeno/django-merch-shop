@@ -48,7 +48,6 @@ Thumbs.db
 # Jupyter Notebook
 .ipynb_checkpoints/
 
-staticfiles/
 
 # Migrations
 **/migrations/**
