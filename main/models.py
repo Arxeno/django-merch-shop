@@ -12,7 +12,7 @@ class Category(models.Model):
 
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True)
-    name = models.CharField(unique=True)
+    name = models.CharField(unique=True, max_length=256)
 
 
 class Item(models.Model):
@@ -27,9 +27,10 @@ class Item(models.Model):
     id = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(unique=True)
+    name = models.CharField(unique=True, max_length=256)
     amount = models.IntegerField()
     description = models.TextField()
     price = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to=upload_path, null=True, blank=True)
+    date = models.DateField(null=True)
