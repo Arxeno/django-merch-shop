@@ -16,5 +16,7 @@ urlpatterns = [
     path('category/<str:category_id>',
          views.get_category_id, name='get_category_id'),
     path('category', views.get_category, name="get_category"),
-    path('create-ajax', views.create_item_ajax, name='create_item_ajax')
+    path('create-ajax', views.create_item_ajax, name='create_item_ajax'),
+    path('create-flutter/', views.create_product_flutter,
+         name='create_product_flutter')
 ]

@@ -33,4 +33,4 @@ class Item(models.Model):
     price = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to=upload_path, null=True, blank=True)
-    date = models.DateField(null=True)
+    date = models.DateField(null=True, blank=True)

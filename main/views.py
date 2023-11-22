@@ -1,3 +1,4 @@
+import json
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import FileResponse, Http404, HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseServerError, JsonResponse
@@ -10,6 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import datetime
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -84,7 +86,8 @@ def show_xml_by_id(request, id):
 
 
 def show_json(request):
-    items = Item.objects.filter(user=request.user)
+    items = Item.objects.all()
+    # items = Item.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', items), content_type='application/json')
 
 
@@ -194,3 +197,24 @@ def create_item_ajax(request):
                         price=price, category=category, image=image)
         new_item.save()
         return JsonResponse({'message': 'Success!'}, status=200)
+
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+
+        new_product = Item.objects.create(
+            user=request.user,
+            name=data["name"],
+            amount=int(data['amount']),
+            description=data["description"],
+            price=int(data["price"]),
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
